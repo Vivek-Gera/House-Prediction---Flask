@@ -37,4 +37,5 @@ def index():
         return render_template('index.html', location_mapping=location_mapping, status_mapping=status_mapping, direction_mapping=direction_mapping, property_type_mapping=property_type_mapping)
 
 if __name__ == '__main__':
-    app.run(use_reloader=True,debug=True)
+    #app.run(use_reloader=True,debug=True)
+    app.run()
