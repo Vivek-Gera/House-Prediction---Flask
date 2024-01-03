@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>House Price Prediction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .btn-submit {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .btn-submit:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+<h1>House Price Prediction</h1>
+
+<div class="container">
+  <form id="predictionForm", method="POST">
+    <div class="form-group">
+
+        <label for="bedrooms">Bed Rooms:</label>
+        <input type="range" min="1" max="10" step="1" id="bedrooms" name="bedrooms" placeholder="Enter number of bedrooms">
+        <br>
+
+        <label for="bathrooms">Bath Rooms:</label>
+        <input type="range" min="1" max="10" step="1" id="bathrooms" name="bathrooms" placeholder="Enter number of bedrooms">
+        <br>
+
+        <label for="">sft</label>
+        <input type="range" name="sft" min="1000" max="10000" required/>
+        <br>
+
+        <label>Location</label>
+        <select name="location">
+          {% for i in location_mapping %}
+          <option value="{{location_mapping[i]}}">{{i}}</option>
+          {% endfor %}
+        </select> <br>
+
+        <label>Status</label>
+        <select name="status">
+          {% for i in status_mapping%}
+          <option value="{{status_mapping[i]}}">{{i}}</option>
+          {% endfor %}
+        </select> <br>
+
+        <label>Direction</label>
+        <select name="direction">
+          {% for i in direction_mapping %}
+          <option value="{{direction_mapping[i]}}">{{i}}</option>
+          {% endfor %}
+        </select> <br>
+
+        <label>Property</label>
+        <select name="property_type">
+          {% for i in property_type_mapping %}
+          <option value="{{property_type_mapping[i]}}">{{i}}</option>
+          {% endfor %}
+        </select> <br>
+
+    </div>
+    <button type="submit" class="btn-submit">Submit</button>
+  </form>
+  <br> <br>
+  {% if prediction is defined %}
+  <div style="text-align: center;">
+    <label>Prediction: {{prediction}}</label>
+  </div>
+  {% endif %}
+</div>
+
+</body>
+</html>
